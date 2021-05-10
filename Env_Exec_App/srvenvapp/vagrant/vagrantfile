@@ -1,0 +1,18 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby sw=2 st=2 et :
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    config.vm.box = "bento/ubuntu-20.10"
+    # config.vm.box = "puppetlabs/debian-7.8-64-puppet"
+    config.vm.box_check_update = false
+
+    config.vm.network "public_network", ip: "192.168.1.203"
+    config.vm.network :forwarded_port, guest: 5000, host: 5000
+
+    config.vm.define 'srvenvapp' do |machine|
+    machine.vm.hostname = 'srvenvapp'
+    end
+  # Provision
+    config.vm.provision :shell, :path => "install.sh"
+end

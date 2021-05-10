@@ -1,0 +1,32 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby sw=2 st=2 et :
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "bento/ubuntu-20.10"
+  # config.vm.box = "puppetlabs/debian-7.8-64-puppet"
+  config.vm.box_check_update = false
+
+  config.vm.network "public_network", ip: "192.168.1.202"
+  config.vm.network :forwarded_port, guest: 8080, host: 8080
+
+  config.vm.define 'srvicjenkins' do |machine|
+  machine.vm.hostname = 'srvicjenkins'
+ # Limiter la RAM de la VM
+  machine.vm.provider 'virtualbox' do |vb|
+  vb.memory = '3000'
+  # UNCOMMENT FOR MORE DISKS
+  disk2_vdi = 'disk2.vdi'
+  # Creer les fichiers au bon format pour VBox s'ils n'existent pas
+  unless File.exist?(disk2_vdi)
+  vb.customize ['createhd', '--filename', disk2_vdi, '--size', 20 * 1024]
+  end
+  # On attache les fichiers 'disque' sur la VM
+  vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller',
+  '--port', 1, '--device', 0, '--type', 'hdd', '--medium',
+  disk2_vdi]
+  end
+  end
+  # Provision
+  config.vm.provision :shell, :path => "install.sh"
+ end

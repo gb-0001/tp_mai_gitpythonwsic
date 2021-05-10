@@ -92,7 +92,7 @@ Dans Documentation\srvicjenkins\doc_jenkins.docx terminer l'installation et la c
 **3 - A partir du git clone pour le serveur build avec vagrant faire:**
 
 ```shell
-Dans le git bash du dossier tp_mai_gitpythonwsic/Elements_chaine_IC/srvicjenkins/vagrant/ préalablement ouvert (avec git bash here clic droit) faire:
+Dans le git bash du dossier tp_mai_gitpythonwsic/Elements_chaine_IC/srvbuild/vagrant/ préalablement ouvert (avec git bash here clic droit) faire:
 vagrant up
 A la fin de l\'installation récupérer et stocker le mot de passe pour finir l\'installation jenkins demandé sur la page web.
 
@@ -106,18 +106,18 @@ vagrant ssh
 TEST DE FONCTIONNEMENT:
 ```shell
 Faire:
-Vérifier le retour OK du ping de la machine 
-ping 192.168.1.201
-saisir la commande gradle --version le bon fonctionnement de la commande et doit retoourner la version:
+Vérifier le retour OK du ping de la machine nexus
+ping 192.168.1.200
+saisir la commande gradle --version pourle bon fonctionnement de la commande et doit retoourner la version:
 gradle --version
 ```
-- Vérifier le fonctionnement ouvrir le navigateur et saisir http://192.168.1.201:8080/ vérifier si la page du site apparait saisir le mot de passe jenkins récupéré avant.
-Dans Documentation\srvicjenkins\doc_jenkins.docx terminer l'installation et la configuration une fois tous les serveurs installés.
 
-**4 - A partir du git clone pour le serveur build avec vagrant faire:**
+Dans Documentation\srvicjenkins\doc_build.docx terminer la configuration une fois tous les serveurs installés.
+
+**4 - A partir du git clone pour la machine d'environnement avec vagrant faire:**
 
 ```shell
-Dans le git bash du dossier tp_mai_gitpythonwsic/Elements_chaine_IC/srvicjenkins/vagrant/ préalablement ouvert (avec git bash here clic droit) faire:
+Dans le git bash du dossier tp_mai_gitpythonwsic/Env_Exec_App/srvenvapp/vagrant/ préalablement ouvert (avec git bash here clic droit) faire:
 vagrant up
 A la fin de l\'installation récupérer et stocker le mot de passe pour finir l\'installation jenkins demandé sur la page web.
 
@@ -131,12 +131,12 @@ vagrant ssh
 TEST DE FONCTIONNEMENT:
 ```shell
 Faire:
-Vérifier le retour OK du ping
-ping 192.168.1.201
-saisir la commande gradle --version le bon fonctionnement de la commande et doit retoourner la version:
-gradle --version
+Vérifier le retour OK du ping du serveur jenkins
+ping 192.168.1.202
+saisir la commande python --version pour le bon fonctionnement de la commande et doit retourner la version:
+python --version
 ```
-- Vérifier le fonctionnement ouvrir le navigateur et saisir http://192.168.1.201:8080/ vérifier si la page du site apparait saisir le mot de passe jenkins récupéré avant.
-Dans Documentation\srvicjenkins\doc_jenkins.docx terminer l'installation et la configuration une fois tous les serveurs installés.
+
+Dans Documentation\srvicjenkins\doc_envapp.docx terminer l'installation et la configuration une fois tous les serveurs installés.
 
 

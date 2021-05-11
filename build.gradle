@@ -23,8 +23,8 @@ def majorVersion = loadProperties('../versionCode.gradle').MAJOR_VERSION
 def minorVersion = loadProperties('../versionCode.gradle').MINOR_VERSION
 
 task prn1 {
-    println "READ MAJOR_VERSION " + majorVersion
-    println "READ MINOR_VERSION " + minorVersion
+    println "READ - ACTUAL MAJOR_VERSION " + majorVersion
+    println "READ - ACTUAL MINOR_VERSION " + minorVersion
 }
 
 version = majorVersion + "." + minorVersion

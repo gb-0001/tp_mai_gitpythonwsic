@@ -1,3 +1,34 @@
+
+**ORGANISATION**
+
+-Sur le git la branch master est la principale PROD
+Les branch de type hb branch Henry
+Les branch de type gb000X branch Gerald
+Les pull request validés par soit meme si pas de conflit sinon contact avec le binome (tchat, appel tel) pour verifier.
+Point de situation le matin, point d'avancement sur les éléménents du jours ou blocage.
+
+
+-Répartition du travail comme suit sur le kanban du git dans l'onglet projet:
+https://github.com/gb-0001/tp_mai_gitpythonwsic/projects/1
+Taches d'infra gerald Vagrant file + script + doc Et Verfication Henry
+Taches Appli python Henry
+Taches gradle gerald
+Taches jenkins Henry par mode pipeline si dispo et Gerald par mode job + doc + xml
+
+-Description de l'architecture de l'application:
+
+
+-Utiliser la doc jenkins pour la configuration et le test de fonctionnement:
+https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/doc_jenkins.docx
+
+-Job jenkins fichier de configuration:
+https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/config.xml
+
+-Fichier gradle:
+https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/build.gradle
+
+**INSTALLATION DES VAGRANTFILE POUR INSTALLER L'INFRA**
+
 **0 - Prérequis:**
 - Avoir installé git bash et vagrant
 - Ne pas avoir de vm vagrant démarré utilisant les mêmes IP et ports en forward(8080,8081) virtualbox sinon éteindre les vm virtualbox déjà présente le temps de la vérification.
@@ -9,11 +40,10 @@ L'utilisateur utilisé est vagrant et sont password vagrant.
 
 *Plan d'adressage IP préconfiguré dans les vagrantfile du git clone et ordre d'installation et le chemin du vagrantfile suivant:*
 1. serveur nexus 192.168.1.200          ==> remplacer *MAVM* ci-dessous par: srvnexus
-2. serveur build 192.168.1.201          ==> remplacer *MAVM* ci-dessous par: srvbuild
+2. serveur build 192.168.1.201          ==> remplacer *MAVM* ci-dessous par: srvbuild (OPTIONNEL)
 3. serveur icjenkins 192.168.1.202      ==> remplacer *MAVM* ci-dessous par: srvicjenkins
 4. serveur envapp 192.168.1.203           ==> remplacer *MAVM* ci-dessous par: srvenvapp
 
-Schema d'architecture:
 
 
 Matrice de flux:

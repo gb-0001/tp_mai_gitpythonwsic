@@ -12,7 +12,7 @@ def loadProperties = { filename ->
     return properties
 }
 
-task prepbuildver(type:Exec, dependsOn: dependances) {
+task prepbuildver(type:Exec) {
         executable 'sh'
         args '-c', 'sudo cp -n versionCode.gradle ../versionCode.gradle'
         standardOutput = new ByteArrayOutputStream()
@@ -30,7 +30,7 @@ task prn1 {
 version = majorVersion + "." + minorVersion
 
 
-task purge(type:Delete) {
+task purge(type:Delete, dependsOn: prepbuildver) {
   //println 'Cleaning up old files'
   delete 'build', 'vendor', 'logs', 'build/*.zip'
 }

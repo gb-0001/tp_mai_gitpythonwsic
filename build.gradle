@@ -81,7 +81,7 @@ task write (type: WriteProperties, dependsOn:up){
     property 'MAJOR_VERSION', majorVersion
     property 'MINOR_VERSION', minorVersion
     println "WRITE MAJOR_VERSION " + majorVersion
-    println "WRITE NEW MINOR_VERSION " + minorVersion
+    println "WRITE NEXT MINOR_VERSION " + minorVersion
 }
 
 task upapi (type:Exec, dependsOn: write) {

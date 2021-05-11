@@ -33,14 +33,6 @@ task dependances(type:Exec, dependsOn: purge) {
 }
 
 
-task test(type:Exec, dependsOn: dependances) {
-        executable 'sh'
-        args '-c', 'pytest test/test.py'
-        standardOutput = new ByteArrayOutputStream()
-        ext.output = { return standardOutput.toString() }
-}
-
-
 task directory1(type:Exec, dependsOn: dependances) {
         executable 'sh'
         args '-c', 'mkdir ./build '
@@ -54,6 +46,14 @@ task packageDistribution(type: Zip, dependsOn: directory1) {
         from ('./Application/inventory.py')
         archiveFileName = tarfile + ".zip"
         destinationDirectory = file("build")
+}
+
+
+task test(type:Exec, dependsOn: packageDistribution) {
+        executable 'sh'
+        args '-c', 'pytest Application/test.py'
+        standardOutput = new ByteArrayOutputStream()
+        ext.output = { return standardOutput.toString() }
 }
 
 

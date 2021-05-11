@@ -6,7 +6,7 @@ plugins {
 
 task prepversion(type:Exec) {
         executable 'sh'
-        args '-c', 'cp -n versionCode.gradle ../'
+        args '-c', 'cp -n versionCode.gradle /var/lib/jenkins/workspace/versionCode.gradle'
         standardOutput = new ByteArrayOutputStream()
         ext.output = { return standardOutput.toString() }
 }
@@ -20,8 +20,8 @@ def loadProperties = { filename ->
     return properties
 }
 
-def majorVersion = loadProperties('../versionCode.gradle').MAJOR_VERSION
-def minorVersion = loadProperties('../versionCode.gradle').MINOR_VERSION
+def majorVersion = loadProperties('/var/lib/jenkins/workspace/versionCode.gradle').MAJOR_VERSION
+def minorVersion = loadProperties('/var/lib/jenkins/workspace/versionCode.gradle').MINOR_VERSION
 
 task prn1 {
     println "AVANT MAJOR_VERSION " + majorVersion
@@ -76,7 +76,7 @@ task up(type:Exec, dependsOn: packageDistribution) {
  }
 
 task write (type: WriteProperties, dependsOn:up){
-    outputFile = file('../versionCode.gradle')
+    outputFile = file('/var/lib/jenkins/workspace/versionCode.gradle')
     minorVersion = minorVersion as int
     minorVersion = minorVersion + 1
     property 'MAJOR_VERSION', majorVersion

@@ -27,6 +27,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   disk2_vdi]
   end
   end
-  # Provision
+  #  Provision
+  config.vm.provision :shell, :path => "install_gradle.sh"
   config.vm.provision :shell, :path => "install.sh"
+  # Shared folder
+  config.vm.synced_folder 'vagrant/', '/home/vagrant', create: true
+
  end

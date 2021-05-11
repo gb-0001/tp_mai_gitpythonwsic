@@ -1,8 +1,4 @@
-plugins {
-  id "org.hasnat.php-build-plugin" version "0.1-SNAPSHOT"
-  id "distribution"
-  id "maven-publish"
-}
+
 
 def loadProperties = { filename ->
     def properties = new Properties()
@@ -10,13 +6,6 @@ def loadProperties = { filename ->
         properties.load(it)
     }
     return properties
-}
-
-task prepbuildver(type:Exec) {
-        executable 'sh'
-        args '-c', 'cp -n versionCode.gradle ../versionCode.gradle'
-        standardOutput = new ByteArrayOutputStream()
-        ext.output = { return standardOutput.toString() }
 }
 
 def majorVersion = loadProperties('../versionCode.gradle').MAJOR_VERSION
@@ -27,10 +16,11 @@ task prn1 {
     println "READ - ACTUAL MINOR_VERSION " + minorVersion
 }
 
+
 version = majorVersion + "." + minorVersion
 
 
-task purge(type:Delete, dependsOn: prepbuildver) {
+task purge(type:Delete, dependsOn: prn1) {
   //println 'Cleaning up old files'
   delete 'build', 'vendor', 'logs', 'build/*.zip'
 }

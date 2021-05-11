@@ -4,14 +4,6 @@ plugins {
   id "maven-publish"
 }
 
-task prepversion(type:Exec) {
-        executable 'sh'
-        args '-c', 'cp -n versionCode.gradle /var/lib/jenkins/workspace/versionCode.gradle'
-        standardOutput = new ByteArrayOutputStream()
-        ext.output = { return standardOutput.toString() }
-}
-
-
 def loadProperties = { filename ->
     def properties = new Properties()
     file(filename).withInputStream {
@@ -20,12 +12,12 @@ def loadProperties = { filename ->
     return properties
 }
 
-def majorVersion = loadProperties('/var/lib/jenkins/workspace/versionCode.gradle').MAJOR_VERSION
-def minorVersion = loadProperties('/var/lib/jenkins/workspace/versionCode.gradle').MINOR_VERSION
+def majorVersion = loadProperties('versionCode.gradle').MAJOR_VERSION
+def minorVersion = loadProperties('versionCode.gradle').MINOR_VERSION
 
 task prn1 {
-    println "AVANT MAJOR_VERSION " + majorVersion
-    println "AVANT MINOR_VERSION " + minorVersion
+    println "MAJ " + majorVersion
+    println "MIN " + minorVersion
 }
 
 version = majorVersion + "." + minorVersion
@@ -76,13 +68,13 @@ task up(type:Exec, dependsOn: packageDistribution) {
  }
 
 task write (type: WriteProperties, dependsOn:up){
-    outputFile = file('/var/lib/jenkins/workspace/versionCode.gradle')
+    outputFile = file('versionCode.gradle')
     minorVersion = minorVersion as int
     minorVersion = minorVersion + 1
     property 'MAJOR_VERSION', majorVersion
     property 'MINOR_VERSION', minorVersion
-    println "APRES MAJOR_VERSION " + majorVersion
-    println "APRES MINOR_VERSION " + minorVersion
+    println "MAJ " + majorVersion
+    println "MAJ " + minorVersion
 }
 
 task upapi (type:Exec, dependsOn: write) {

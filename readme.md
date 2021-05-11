@@ -8,9 +8,10 @@ A partir de l'explorateur windows, dans le dossier vagrant des différents serve
 L'utilisateur utilisé est vagrant et sont password vagrant.
 
 *Plan d'adressage IP préconfiguré dans les vagrantfile du git clone et ordre d'installation et le chemin du vagrantfile suivant:*
-1. serveur nexus 192.168.1.200          ==> remplacer *MAVM* par: srvnexus      ==>tp_mai_gitpythonwsic/Elements_chaine_IC/srvnexus/vagrant/
-2. serveur icjenkins 192.168.1.202      ==> remplacer *MAVM* par: srvicjenkins  ==>tp_mai_gitpythonwsic/Elements_chaine_IC/srvicjenkins/vagrant/
-3. serveur envapp 192.168.1.203         ==> remplacer *MAVM* par: srvenvapp     ==>tp_mai_gitpythonwsic/Env_Exec_App/srvenvapp/vagrant/
+1. serveur nexus 192.168.1.200          ==> remplacer *MAVM* ci-dessous par: srvnexus
+2. serveur build 192.168.1.201          ==> remplacer *MAVM* ci-dessous par: srvbuild
+3. serveur icjenkins 192.168.1.202      ==> remplacer *MAVM* ci-dessous par: srvicjenkins
+4. serveur envapp 192.168.1.203           ==> remplacer *MAVM* ci-dessous par: srvenvapp
 
 Schema d'architecture:
 
@@ -95,7 +96,42 @@ gradle --version
 Dans Documentation\srvicjenkins\doc_jenkins.docx terminer l'installation et la configuration une fois tous les serveurs installés.
 
 
-**3 - A partir du git clone pour la machine d'environnement avec vagrant faire:**
+**3 - A partir du git clone pour le serveur build avec vagrant faire:**
+
+```shell
+Dans le git bash du dossier tp_mai_gitpythonwsic/Elements_chaine_IC/srvbuild/vagrant/ préalablement ouvert (avec git bash here clic droit) faire:
+vagrant up
+
+Serveur optionnel en installation sert à préparer le build.gradle disponible sur le git avec versionCode.gradle
+
+```
+puis se connecter à la vm:
+```shell
+Faire:
+vagrant ssh
+```
+
+TEST DE FONCTIONNEMENT:
+```shell
+Faire:
+Vérifier le retour OK du ping vers le nexus
+ping 192.168.1.200
+POur la partie build saisir la commande gradle --version pourle bon fonctionnement de la commande et doit retourner la version:
+gradle --version
+
+Test manuel optionnel pris en charge par le pipe jenkins:
+dans /home/vagrant
+git clone https://github.com/gb-0001/tp_mai_gitpythonwsic.git
+cd tp_mai_gitpythonwsic/Application
+wget -O versionCode.gradle https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Elements_chaine_IC/srvbuild/build.gradle
+wget -O build.gradle https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Elements_chaine_IC/srvbuild/versionCode.gradle
+build manuel du fichier python vers le nexus:
+gradle task write --no-daemon --info
+
+```
+
+
+**4 - A partir du git clone pour la machine d'environnement avec vagrant faire:**
 
 ```shell
 Dans le git bash du dossier tp_mai_gitpythonwsic/Env_Exec_App/srvenvapp/vagrant/ préalablement ouvert (avec git bash here clic droit) faire:

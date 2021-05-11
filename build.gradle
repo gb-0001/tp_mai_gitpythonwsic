@@ -54,7 +54,7 @@ task directory1(type:Exec, dependsOn: dependances) {
 
 def tarfile = "application-inventory-" + version
 task packageDistribution(type: Zip, dependsOn: directory1) {
-        from ('inventory.py')
+        from ('./Application/inventory.py')
         archiveFileName = tarfile + ".zip"
         destinationDirectory = file("build")
 }
@@ -67,7 +67,14 @@ task up(type:Exec, dependsOn: packageDistribution) {
    ext.output = { return standardOutput.toString() }
  }
 
-task write (type: WriteProperties, dependsOn:up){
+task upapi (type:Exec, dependsOn: up) {
+   executable 'sh'
+   args '-c', 'curl -X POST -u gb-0001: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 http://192.168.1.202/repos/gb-0001/testapibyscript/branches'
+   standardOutput = new ByteArrayOutputStream()
+   ext.output = { return standardOutput.toString() }
+ }
+
+task write (type: WriteProperties, dependsOn:upapi){
     outputFile = file('versionCode.gradle')
     minorVersion = minorVersion as int
     minorVersion = minorVersion + 1
@@ -76,3 +83,4 @@ task write (type: WriteProperties, dependsOn:up){
     println "MAJ " + majorVersion
     println "MAJ " + minorVersion
 }
+

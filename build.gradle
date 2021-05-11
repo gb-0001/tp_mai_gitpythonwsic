@@ -1,0 +1,85 @@
+plugins {
+  id "org.hasnat.php-build-plugin" version "0.1-SNAPSHOT"
+  id "distribution"
+  id "maven-publish"
+}
+
+def loadProperties = { filename ->
+    def properties = new Properties()
+    file(filename).withInputStream {
+        properties.load(it)
+    }
+    return properties
+}
+
+def majorVersion = loadProperties('versionCode.gradle').MAJOR_VERSION
+def minorVersion = loadProperties('versionCode.gradle').MINOR_VERSION
+
+task prn1 {
+    println "MAJ " + majorVersion
+    println "MIN " + minorVersion
+}
+
+version = majorVersion + "." + minorVersion
+
+
+task purge(type:Delete) {
+  //println 'Cleaning up old files'
+  delete 'build', 'vendor', 'logs', 'build/*.zip'
+}
+
+task dependances(type:Exec, dependsOn: purge) {
+        executable 'sh'
+        args '-c', 'pip install flask pytest'
+        standardOutput = new ByteArrayOutputStream()
+        ext.output = { return standardOutput.toString() }
+}
+
+
+task test(type:Exec, dependsOn: dependances) {
+        executable 'sh'
+        args '-c', 'pytest test/test.py'
+        standardOutput = new ByteArrayOutputStream()
+        ext.output = { return standardOutput.toString() }
+}
+
+
+task directory1(type:Exec, dependsOn: dependances) {
+        executable 'sh'
+        args '-c', 'mkdir ./build'
+        standardOutput = new ByteArrayOutputStream()
+        ext.output = { return standardOutput.toString() }
+}
+
+
+def tarfile = "application-inventory-" + version
+task packageDistribution(type: Zip, dependsOn: directory1) {
+        from ('./Application/inventory.py')
+        archiveFileName = tarfile + ".zip"
+        destinationDirectory = file("build")
+}
+
+
+task up(type:Exec, dependsOn: packageDistribution) {
+   executable 'sh'
+   args '-c', 'curl -v --user "admin:password" --upload-file build/application-inventory-' + version + '.zip http://192.168.1.200:8081/repository/APP/application/project/' + version + '/application-inventory-' + version + '.zip'
+   standardOutput = new ByteArrayOutputStream()
+   ext.output = { return standardOutput.toString() }
+ }
+
+task write (type: WriteProperties, dependsOn:up){
+    outputFile = file('versionCode.gradle')
+    minorVersion = minorVersion as int
+    minorVersion = minorVersion + 1
+    property 'MAJOR_VERSION', majorVersion
+    property 'MINOR_VERSION', minorVersion
+    println "MAJ " + majorVersion
+    println "MAJ " + minorVersion
+}
+
+task upapi (type:Exec, dependsOn: write) {
+   executable 'sh'
+   args '-c', 'curl -X POST -u gb-0001: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 http://192.168.1.202/repos/gb-0001/testapibyscript/branches'
+   standardOutput = new ByteArrayOutputStream()
+   ext.output = { return standardOutput.toString() }
+ }

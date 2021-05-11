@@ -14,7 +14,7 @@ def loadProperties = { filename ->
 
 task prepbuildver(type:Exec) {
         executable 'sh'
-        args '-c', 'sudo cp -n versionCode.gradle ../versionCode.gradle'
+        args '-c', 'cp -n versionCode.gradle ../versionCode.gradle'
         standardOutput = new ByteArrayOutputStream()
         ext.output = { return standardOutput.toString() }
 }
@@ -53,7 +53,7 @@ task test(type:Exec, dependsOn: dependances) {
 
 task directory1(type:Exec, dependsOn: dependances) {
         executable 'sh'
-        args '-c', 'mkdir ./build'
+        args '-c', 'mkdir ./build && chmod '
         standardOutput = new ByteArrayOutputStream()
         ext.output = { return standardOutput.toString() }
 }

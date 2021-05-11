@@ -2,7 +2,7 @@
 **ORGANISATION**
 
 -Sur le git la branch master est la principale PROD
-Les branch de type hb branch Henry
+Les branch de type hb branch Henri
 Les branch de type gb000X branch Gerald
 Les pull request validés par soit meme si pas de conflit sinon contact avec le binome (tchat, appel tel) pour verifier.
 Point de situation le matin, point d'avancement sur les éléménents du jours ou blocage.
@@ -10,10 +10,10 @@ Point de situation le matin, point d'avancement sur les éléménents du jours o
 
 -Répartition du travail comme suit sur le kanban du git dans l'onglet projet:
 https://github.com/gb-0001/tp_mai_gitpythonwsic/projects/1
-Taches d'infra gerald Vagrant file + script + doc Et Verfication Henry
-Taches Appli python Henry
+Taches d'infra gerald Vagrant file + script + doc Et Verfication Henri
+Taches Appli python Henri
 Taches gradle gerald
-Taches jenkins Henry par mode pipeline si dispo et Gerald par mode job + doc + xml
+Taches jenkins Henri par mode pipeline si dispo et Gerald par mode job + doc + xml
 
 -Description de l'architecture de l'application:
 
@@ -26,6 +26,10 @@ https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicj
 
 -Fichier gradle:
 https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/build.gradle
+
+
+
+
 
 **INSTALLATION DES VAGRANTFILE POUR INSTALLER L'INFRA**
 

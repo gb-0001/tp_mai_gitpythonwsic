@@ -96,7 +96,7 @@ gradle --version
 Dans Documentation\srvicjenkins\doc_jenkins.docx terminer l'installation et la configuration une fois tous les serveurs installés.
 
 
-**3 - A partir du git clone pour le serveur build avec vagrant faire:**
+**4 - A partir du git clone pour le serveur build avec vagrant faire:**
 
 ```shell
 Dans le git bash du dossier tp_mai_gitpythonwsic/Elements_chaine_IC/srvbuild/vagrant/ préalablement ouvert (avec git bash here clic droit) faire:
@@ -131,7 +131,7 @@ gradle task write --no-daemon --info
 ```
 
 
-**4 - A partir du git clone pour la machine d'environnement avec vagrant faire:**
+**5 - A partir du git clone pour la machine d'environnement avec vagrant faire:**
 
 ```shell
 Dans le git bash du dossier tp_mai_gitpythonwsic/Env_Exec_App/srvenvapp/vagrant/ préalablement ouvert (avec git bash here clic droit) faire:

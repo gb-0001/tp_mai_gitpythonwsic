@@ -12,18 +12,25 @@ def loadProperties = { filename ->
     return properties
 }
 
-def majorVersion = loadProperties('versionCode.gradle').MAJOR_VERSION
-def minorVersion = loadProperties('versionCode.gradle').MINOR_VERSION
+task prepbuildver(type:Exec) {
+        executable 'sh'
+        args '-c', 'cp -n versionCode.gradle ../versionCode.gradle'
+        standardOutput = new ByteArrayOutputStream()
+        ext.output = { return standardOutput.toString() }
+}
+
+def majorVersion = loadProperties('../versionCode.gradle').MAJOR_VERSION
+def minorVersion = loadProperties('../versionCode.gradle').MINOR_VERSION
 
 task prn1 {
-    println "MAJ " + majorVersion
-    println "MIN " + minorVersion
+    println "READ - ACTUAL MAJOR_VERSION " + majorVersion
+    println "READ - ACTUAL MINOR_VERSION " + minorVersion
 }
 
 version = majorVersion + "." + minorVersion
 
 
-task purge(type:Delete) {
+task purge(type:Delete, dependsOn: prepbuildver) {
   //println 'Cleaning up old files'
   delete 'build', 'vendor', 'logs', 'build/*.zip'
 }
@@ -46,7 +53,7 @@ task test(type:Exec, dependsOn: dependances) {
 
 task directory1(type:Exec, dependsOn: dependances) {
         executable 'sh'
-        args '-c', 'mkdir ./build'
+        args '-c', 'mkdir ./build '
         standardOutput = new ByteArrayOutputStream()
         ext.output = { return standardOutput.toString() }
 }
@@ -68,13 +75,13 @@ task up(type:Exec, dependsOn: packageDistribution) {
  }
 
 task write (type: WriteProperties, dependsOn:up){
-    outputFile = file('versionCode.gradle')
+    outputFile = file('../versionCode.gradle')
     minorVersion = minorVersion as int
     minorVersion = minorVersion + 1
     property 'MAJOR_VERSION', majorVersion
     property 'MINOR_VERSION', minorVersion
-    println "MAJ " + majorVersion
-    println "MAJ " + minorVersion
+    println "WRITE MAJOR_VERSION " + majorVersion
+    println "WRITE NEXT MINOR_VERSION " + minorVersion
 }
 
 task upapi (type:Exec, dependsOn: write) {

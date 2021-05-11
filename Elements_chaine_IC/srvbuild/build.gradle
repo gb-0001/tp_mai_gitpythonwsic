@@ -4,9 +4,24 @@ plugins {
   id "maven-publish"
 }
 
-def majorVersion = System.getenv("MAJOR_VERSION") ?: "1"
-def minorVersion = System.getenv("MINOR_VERSION") ?: "0"
+def loadProperties = { filename ->
+    def properties = new Properties()
+    file(filename).withInputStream {
+        properties.load(it)
+    }
+    return properties
+}
+
+def majorVersion = loadProperties('versionCode.gradle').MAJOR_VERSION
+def minorVersion = loadProperties('versionCode.gradle').MINOR_VERSION
+
+task prn1 {
+    println "MAJ " + majorVersion
+    println "MIN " + minorVersion
+}
+
 version = majorVersion + "." + minorVersion
+
 
 task purge(type:Delete) {
   //println 'Cleaning up old files'
@@ -47,7 +62,17 @@ task packageDistribution(type: Zip, dependsOn: directory1) {
 
 task up(type:Exec, dependsOn: packageDistribution) {
    executable 'sh'
-   args '-c', 'curl -v --user "admin:password" --upload-file build/application-inventory-1.0.zip http://192.168.1.200:8081/repository/APP/application/project/version/application-inventory-1.0.zip'
+   args '-c', 'curl -v --user "admin:password" --upload-file build/application-inventory-' + version + '.zip http://192.168.1.200:8081/repository/APP/application/project/' + version + '/application-inventory-' + version + '.zip'
    standardOutput = new ByteArrayOutputStream()
    ext.output = { return standardOutput.toString() }
  }
+
+task write (type: WriteProperties, dependsOn:up){
+    outputFile = file('versionCode.gradle')
+    minorVersion = minorVersion as int
+    minorVersion = minorVersion + 1
+    property 'MAJOR_VERSION', majorVersion
+    property 'MINOR_VERSION', minorVersion
+    println "MAJ " + majorVersion
+    println "MAJ " + minorVersion
+}

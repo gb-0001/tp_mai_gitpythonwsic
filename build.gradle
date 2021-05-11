@@ -53,7 +53,7 @@ task test(type:Exec, dependsOn: dependances) {
 
 task directory1(type:Exec, dependsOn: dependances) {
         executable 'sh'
-        args '-c', 'mkdir ./build && chmod '
+        args '-c', 'mkdir ./build '
         standardOutput = new ByteArrayOutputStream()
         ext.output = { return standardOutput.toString() }
 }

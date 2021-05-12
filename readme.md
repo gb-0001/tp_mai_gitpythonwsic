@@ -2,61 +2,85 @@
 
 Pour info: Absence Gerald le vendredi 14 en congé
 
--Sur le git la branch master est la principale PROD
-Les branch de type hb branch Henry
+*-Git*
+-Sur github la branch master est la principale PROD
+Les branch de type hb branch Henri
 Les branch de type gb000X branch Gerald
+
+Pull request validé par le binôme au début.
 Les pull request validés par soit meme si pas de conflit sinon contact avec le binome (tchat, appel tel) pour verifier.
-Initialisation et récupération du git:
+
+Initialisation et récupération du git en local:
 git clone https://github.com/gb-0001/tp_mai_gitpythonwsic.git
-création des 2 branches de dev depuis github puis récupération local
+création des 2 branches de dev sur le site github
+création des 2 branches de dev localement avec sa branche respective hg ou gb0001 ou gb0002
 avec git checkout -b hg/gb000X
-git fetch pour MAJ et git add . + git commit -m "montext" + git push --set-upstream-to origin gb000X/hg
+Association des branches respectives
+git branch --set-upstream-to=origin/gb0002 gb0002
+git fetch pour MAJ
+git pull pour la récupération des modification en remote
+git add . + git commit -m "montext" + git push --set-upstream-to origin gb000X ou hg
 Sur github le pull request de la branch en push + merge et git fetch localement pour rafraichir
-Point de situation le matin, point d'avancement sur les éléménents du jours ou blocage.
+
+Point de situation le matin, point d'avancement sur les éléménents du jours ou blocage en début d'après midi.
 
 
--Répartition du travail comme suit sur le kanban du github dans l'onglet projet:
+*-Répartition du travail comme suit sur le kanban du github dans l'onglet projet:*
+
 https://github.com/gb-0001/tp_mai_gitpythonwsic/projects/1
+
 - Taches d'infra gerald Vagrant file + script + doc jenkins et Nexus + readme.md Et Verfication Henri
 - Taches Appli python + swagger + doc Henri
 - Taches gradle gerald
 - Taches jenkins Gerald par mode job + doc + xml
 
--Description de l'architecture de l'application:
+
+*-Description de l'architecture de l'application:*
 
 
 
 
--Utiliser la doc jenkins pour la configuration et le test de fonctionnement:
-https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/doc_jenkins.docx
-
--Job jenkins fichier de configuration:
-https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/config.xml
 
 
 
 
 **Plan de séquencement d'installation et configuration:**
+
 1- procéder à l'installation ci-dessous des vm avec vagrant INFRA dans l'ordre suivant:
     - srvnexus
     - srvicjenkins
     - srvenvapp
 
 2- Configurer le serveur Nexus utiliser la doc:
+
 https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvnexus/doc_nexus.docx
 
 3- Configurer le serveur jenkins avec la doc suivante:
+
 https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/doc_jenkins.docx
 
 4- Utilisation de l'application
 
+
+
+
+
 **Les retours demandés:**
+
+- Dossiers github:
+    Application ==> appli python
+    Documentation ==> par serveur
+    Elements_chaine_IC ==> par serveur contient les vagrantfile préconfigurés et les scripts d'installation liés au vagrantfile dans le sous dossier vagrant
+    A la racine le fichier build.gradle et versionCode.gradle utilisé par jenkins
+
 - Pour le job jenkins et les traces de fonctionnement du job:
 https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/config.xml
 https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/doc_jenkins.docx
 
 - Fichier gradle:
 https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/build.gradle
+
+
 
 
 
@@ -85,8 +109,8 @@ Matrice de flux:
 | Description               | IP source   | IP destination  | Port destination|
 |---------------------------|-------------|-----------------|-----------------|
 |Serveur Jenkins vers Nexus |192.168.1.202| 192.168.1.200   |       8081      |
-|                           |             |                 |                 |
-|                           |             |                 |                 |
+|Serveur GitHub vers jenkins|GITHUB       | 192.168.1.202   |       8080      |
+|srvenvapp vers|l'api Nexus |192.168.1.203| 192.168.1.200   |       8081
 
 **1 - Faire un git clone**
 Le lancement des vm vagrant s'effectura à partir du dossier repectif des vagrantfile et dans l'arboresence du git clone
@@ -160,7 +184,7 @@ gradle --version
 Dans Documentation\srvicjenkins\doc_jenkins.docx terminer l'installation et la configuration une fois tous les serveurs installés.
 
 
-**3 - A partir du git clone pour le serveur build avec vagrant faire:**
+**3 - (optionnel élément de préparation) A partir du git clone pour le serveur build avec vagrant faire:**
 
 ```shell
 Dans le git bash du dossier tp_mai_gitpythonwsic/Elements_chaine_IC/srvbuild/vagrant/ préalablement ouvert (avec git bash here clic droit) faire:

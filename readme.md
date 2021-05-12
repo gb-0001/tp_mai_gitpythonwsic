@@ -1,21 +1,30 @@
-
 **ORGANISATION**
+
+Pour info: Absence Gerald le vendredi 14 en congé
 
 -Sur le git la branch master est la principale PROD
 Les branch de type hb branch Henry
 Les branch de type gb000X branch Gerald
 Les pull request validés par soit meme si pas de conflit sinon contact avec le binome (tchat, appel tel) pour verifier.
+Initialisation et récupération du git:
+git clone https://github.com/gb-0001/tp_mai_gitpythonwsic.git
+création des 2 branches de dev puis récupération local
+avec git checkout -b hg/gb000X
+git fetch pour MAJ et git add . + git commit -m "montext" + git push --set-upstream-to origin gb000X/hg
+Sur github le pull request de la branch en push + merge et git fetch localement pour rafraichir
 Point de situation le matin, point d'avancement sur les éléménents du jours ou blocage.
 
 
--Répartition du travail comme suit sur le kanban du git dans l'onglet projet:
+-Répartition du travail comme suit sur le kanban du github dans l'onglet projet:
 https://github.com/gb-0001/tp_mai_gitpythonwsic/projects/1
-Taches d'infra gerald Vagrant file + script + doc Et Verfication Henry
-Taches Appli python Henry
+Taches d'infra gerald Vagrant file + script + doc Et Verfication Henri
+Taches Appli python + swagger + Henri
 Taches gradle gerald
-Taches jenkins Henry par mode pipeline si dispo et Gerald par mode job + doc + xml
+Taches jenkins Henri par mode pipeline si dispo et Gerald par mode job + doc + xml
 
 -Description de l'architecture de l'application:
+
+
 
 
 -Utiliser la doc jenkins pour la configuration et le test de fonctionnement:
@@ -26,6 +35,12 @@ https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicj
 
 -Fichier gradle:
 https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/build.gradle
+
+
+
+
+
+
 
 **INSTALLATION DES VAGRANTFILE POUR INSTALLER L'INFRA**
 

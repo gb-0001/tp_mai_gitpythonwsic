@@ -9,8 +9,11 @@ def print_hi(name):
 if __name__ == '__main__':
     isNumber = True
     print_hi('Bienvenue sur notre application')
-    print_hi("1 - Lister toutes les machines du parc.")
-    print_hi("2 - Chercher une machine en particulier sur le parc.")
+    print_hi("1 - Lister toutes les postes.")
+    print_hi("2 - Chercher un poste en particulier(host).")
+    print_hi("3 - Supprimer un  poste(host).")
+    print_hi("4 - Creer un  poste.")
+    print_hi("5 - Modifier un  poste.")
     while isNumber:
         choice_user = input("Choisissez entre les différentes options: ")
         try:
@@ -25,11 +28,12 @@ if __name__ == '__main__':
         data = crud.get_poste(host)
         crud.printData(data)
     elif choice_user == 3:
-        print("2")
-    elif choice_user == 4:
         host = input("Veuillez saisir le host d'une poste: ")
         crud.delete_poste(host)
+    elif choice_user == 4:
+        crud.create_poste()
     elif choice_user == 5:
-        print("2")
+        host = input("Veuillez saisir le host du poste à modifier: ")
+        crud.update_poste(host)
     else:
         print("Choix inconnu...")

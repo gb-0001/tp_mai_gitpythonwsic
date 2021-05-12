@@ -8,7 +8,7 @@ Les branch de type gb000X branch Gerald
 Les pull request validés par soit meme si pas de conflit sinon contact avec le binome (tchat, appel tel) pour verifier.
 Initialisation et récupération du git:
 git clone https://github.com/gb-0001/tp_mai_gitpythonwsic.git
-création des 2 branches de dev puis récupération local
+création des 2 branches de dev depuis github puis récupération local
 avec git checkout -b hg/gb000X
 git fetch pour MAJ et git add . + git commit -m "montext" + git push --set-upstream-to origin gb000X/hg
 Sur github le pull request de la branch en push + merge et git fetch localement pour rafraichir
@@ -17,10 +17,10 @@ Point de situation le matin, point d'avancement sur les éléménents du jours o
 
 -Répartition du travail comme suit sur le kanban du github dans l'onglet projet:
 https://github.com/gb-0001/tp_mai_gitpythonwsic/projects/1
-Taches d'infra gerald Vagrant file + script + doc Et Verfication Henri
-Taches Appli python + swagger + Henri
-Taches gradle gerald
-Taches jenkins Henri par mode pipeline si dispo et Gerald par mode job + doc + xml
+- Taches d'infra gerald Vagrant file + script + doc jenkins et Nexus + readme.md Et Verfication Henri
+- Taches Appli python + swagger + doc Henri
+- Taches gradle gerald
+- Taches jenkins Gerald par mode job + doc + xml
 
 -Description de l'architecture de l'application:
 
@@ -33,11 +33,30 @@ https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicj
 -Job jenkins fichier de configuration:
 https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/config.xml
 
--Fichier gradle:
+
+
+
+**Plan de séquencement d'installation et configuration:**
+1- procéder à l'installation ci-dessous des vm avec vagrant INFRA dans l'ordre suivant:
+    - srvnexus
+    - srvicjenkins
+    - srvenvapp
+
+2- Configurer le serveur Nexus utiliser la doc:
+https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvnexus/doc_nexus.docx
+
+3- Configurer le serveur jenkins avec la doc suivante:
+https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/doc_jenkins.docx
+
+4- Utilisation de l'application
+
+**Les retours demandés:**
+- Pour le job jenkins et les traces de fonctionnement du job:
+https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/config.xml
+https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/Documentation/srvicjenkins/doc_jenkins.docx
+
+- Fichier gradle:
 https://github.com/gb-0001/tp_mai_gitpythonwsic/blob/master/build.gradle
-
-
-
 
 
 

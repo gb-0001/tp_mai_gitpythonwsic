@@ -1,0 +1,24 @@
+[
+    {
+       "id":0,
+       "host":"host",
+       "ip":"ip",
+       "nombre_cpu":"nombre_cpu",
+       "taille_ram":"taille_ram",
+       "nombre_disque":"nombre_disque",
+       "taille_disque":"taille_disque",
+       "os":"os",
+       "version_os":"version_os"
+    },
+    {
+        "id":1,
+        "host":"test",
+        "ip":"test",
+        "nombre_cpu":"test",
+        "taille_ram":"test",
+        "nombre_disque":"test",
+        "taille_disque":"test",
+        "os":"test",
+        "version_os":"test"
+     }
+ ]

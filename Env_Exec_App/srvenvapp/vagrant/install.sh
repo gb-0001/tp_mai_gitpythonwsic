@@ -15,4 +15,4 @@ echo "alias pip=pip3" > ~/.bashrc
 ufw allow 5000/tcp
 
 #install utilitaire de test dont flask pour expostion de l'api
-sudo pip install flask pytest
+sudo pip install flask pytest fastapi uvicorn

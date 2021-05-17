@@ -23,8 +23,8 @@ wget -O inventory.py https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/
 wget -O poste.json https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application/poste.json
 
 cd /home/vagrant/Application-flastapi
-wget -O bdd.py https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application-flastapi/bdd.py
-wget -O crud.py https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application-flastapi/crud.py
-wget -O Machine.py https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application-flastapi/Machine.py
-wget -O poste.json https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application-flastapi/poste.json
-wget -O main.py https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application-flastapi/main.py
+wget -O bdd.py https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application/Application-flastapi/bdd.py
+wget -O crud.py https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application/Application-flastapi/crud.py
+wget -O Machine.py https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application/Application-flastapi/Machine.py
+wget -O poste.json https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application/Application-flastapi/poste.json
+wget -O main.py https://github.com/gb-0001/tp_mai_gitpythonwsic/raw/master/Application/Application-flastapi/main.py

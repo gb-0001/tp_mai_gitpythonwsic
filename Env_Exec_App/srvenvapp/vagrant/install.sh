@@ -8,8 +8,8 @@ sudo apt -y update
 sudo apt -y install python3 python3-pip
 
 #positionnement de python3 et pip3 dans le profil
-echo "alias python='/usr/bin/python3'" > ~/.bashrc
-echo "alias pip=pip3" > ~/.bashrc
+sudo sh -c "echo \"alias python='/usr/bin/python3'\" > ~/.bashrc"
+sudo sh -c "echo \"alias pip=pip3\" > ~/.bashrc"
 
 #Autorisation de l'acces api
 ufw allow 5000/tcp

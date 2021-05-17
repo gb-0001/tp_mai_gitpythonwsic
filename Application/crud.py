@@ -1,5 +1,5 @@
 import bdd
-from Poste import Poste
+from poste import Poste
 
 listPoste = []
 

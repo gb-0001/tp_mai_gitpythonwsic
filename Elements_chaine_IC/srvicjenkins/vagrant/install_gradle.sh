@@ -4,7 +4,7 @@
 dpkg -l | grep openjdk-11-jdk
 RETOUR_INSTALL_OPENJDK=$?
 #Test presence du binaire gradle
-RETOUR_BIN_GRADLE=gradle --version
+RETOUR_BIN_GRADLE=/opt/gradle/latest/bin/gradle --version
 RETOUR_GRADLE=$?
 if [[ $RETOUR_INSTALL_OPENJDK = 0 ]] && [[ $RETOUR_GRADLE = 0 ]]; then
     echo "Serveur build déjà installé"

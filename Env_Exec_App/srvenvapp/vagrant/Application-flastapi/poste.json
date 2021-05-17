@@ -1,0 +1,14 @@
+[
+    {
+       "name":"henri",
+       "version":"host",
+       "auteur":"ip",
+       "licence":"nombre_cpu"
+    },
+    {
+        "name":"test",
+        "version":"test",
+        "auteur":"test",
+        "licence":"test"
+     }
+ ]

@@ -7,15 +7,11 @@ echo 'vagrant:vagrant' | sudo chpasswd
 sudo apt -y update
 sudo apt -y install python3 python3-pip
 
-#positionnement de python3 et pip3 dans le profil
-sudo sh -c "echo \"alias python='/usr/bin/python3'\" > ~/.bashrc"
-sudo sh -c "echo \"alias pip=pip3\" > ~/.bashrc"
-
 #Autorisation de l'acces api
 ufw allow 5000/tcp
 
-#install utilitaire de test dont flask pour expostion de l'api
-sudo pip install flask pytest fastapi uvicorn
+#install utilitaire de test  pour exposition de l'api
+sudo pip install pytest fastapi uvicorn
 
 #Installation de l'appli suivant instructions donnés
 mkdir /home/vagrant/Application

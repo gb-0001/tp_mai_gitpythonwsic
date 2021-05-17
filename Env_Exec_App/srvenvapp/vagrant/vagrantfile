@@ -15,4 +15,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   # Provision
     config.vm.provision :shell, :path => "install.sh"
+
+    # Shared folder
+
+    config.vm.synced_folder 'vagrant/', '/home/vagrant', create: true
 end

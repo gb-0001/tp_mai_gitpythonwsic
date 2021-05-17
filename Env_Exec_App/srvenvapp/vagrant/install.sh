@@ -8,7 +8,7 @@ sudo apt -y update
 sudo apt -y install python3 python3-pip
 
 #Autorisation de l'acces api
-ufw allow 5000/tcp
+ufw allow 8000/tcp
 
 #install utilitaire de test  pour exposition de l'api
 sudo pip install pytest fastapi uvicorn

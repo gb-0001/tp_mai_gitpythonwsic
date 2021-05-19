@@ -110,7 +110,7 @@ Matrice de flux:
 |---------------------------|-------------|-----------------|-----------------|
 |Serveur Jenkins vers Nexus |192.168.1.202| 192.168.1.200   |       8081      |
 |Serveur GitHub vers jenkins|GITHUB       | 192.168.1.202   |       8080      |
-|srvenvapp vers|l'api Nexus |192.168.1.203| 192.168.1.200   |       8081
+|srvenvapp vers|l'api Nexus |192.168.1.203| 192.168.1.200   |       8081      |
 
 **1 - Faire un git clone**
 Le lancement des vm vagrant s'effectura à partir du dossier repectif des vagrantfile et dans l'arboresence du git clone
